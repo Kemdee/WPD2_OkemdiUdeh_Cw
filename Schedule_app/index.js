@@ -15,7 +15,7 @@ app.set('view engine', 'mustache');
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.listen(3000, () => {
-    console.log('Server started on port 3000, ctrl^c to quit.');
+    console.log('Server started on port 3000. Ctrl^c to quit.');
 })
 
 app.use('/', router);

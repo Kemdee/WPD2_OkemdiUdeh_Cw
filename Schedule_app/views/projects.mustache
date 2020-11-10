@@ -3,22 +3,39 @@
 <head>
     {{>header}}
 </head>
-<body class="container">
-    <h1>Projects</h1>
-    <div class="text-right">
-        <a href="/new" class="btn btn-primary">
-        Add Project
-        </a>
-    </div>
-        <div class="container">
-        <div>
+<body class="section">
+    <section class="section1">
+        <div class="grid1-item" id="nav">
+            <img src="../prof.png" alt="Prof">
+            <h1>Welcome User!</h1>
         </div>
-        <hr>
-        <div>
+        <div class="grid1-item">
+            <h1>{{title}}</h1>
+            {{! <div>
+            <a href="/new" class="btn btn-primary">
+            Write in the guestbook
+            </a>
+            </div> }}
+            <div class="grid-cont">
+                {{#projects}}
+                <div class="grid-item">
+                    <h1 id="tit">{{pTitle}}</h1>
+                    <h2>{{module}}</h2>
+                </div>
+                {{/projects}}
+                {{^projects}}
+                Yayy!!! No Projects due.
+                {{/projects}}
+            </div>
         </div>
-        <div>
-        </div>
-        <hr>
-        </div>
+    </section>
+    <script>
+        $(document).ready(function(){ 
+            var colors = ['red','blue','green','yellow','cyan','orange'];
+            var new_color = colors[Math.floor(Math.random()*colors.length)];
+            $('#tit').css('background-color',new_color);  
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
