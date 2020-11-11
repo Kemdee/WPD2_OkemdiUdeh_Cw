@@ -13,32 +13,31 @@ class GuestBook {
     }
 
 
-    getAllEntries() {
+    getAllProjects() {
         return new Promise((resolve, reject) => {
-            this.db.find({}, function(err, entries) {
+            this.db.find({}, function(err, projects) {
                 if (err) {
                     reject(err);
                 }
                 else {
-                    resolve(entries);
-                    console.log("Function all() returns: ", entries);
+                    resolve(projects);
+                    console.log("Function all() returns: ", projects);
                 }
             })
         })
     }
 
-    addEntry(author, subject, contents) {
-        var entry = {
-            author: author,
-            subject: subject,
-            contents: contents,
-            published: new Date().toISOString().split('T')[0]
+    addEntry(title, module, due) {
+        var project = {
+            title: title,
+            module: module,
+            due: due
         }
-        console.log('entry created', entry);
+        console.log('project created', project);
 
-        this.db.insert(entry, function(err, doc) {
+        this.db.insert(project, function(err, doc) {
             if (err) {
-                console.log('Error inserting document', subject);
+                console.log('Error inserting document', err);
             }
             else {
                 console.log('document inserted into the database', doc);

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{>header}}
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="nav" id="myNav">
@@ -9,7 +10,7 @@
         <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
         <h1>Welcome User!</h1>
         <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
-        <a href="#add"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
+        <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
         <a href="#remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
         <a href="#modify"><i class="fas fa-exchange-alt fa-1.8x"></i> Modify Project</a>
         <a href="#share"><i class="fas fa-share fa-1.8x"></i>       Share Project</a>
@@ -28,17 +29,12 @@
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
     <div class="main" id="myMain">
-        <h1>My {{title}}</h1>
+        <h1>My {{heading}}</h1>
         <h3 class="date">{{date}}</h3>
-        {{! <div>
-        <a href="/new" class="btn btn-primary">
-        Write in the guestbook
-        </a>
-        </div> }}
         <div class="card-cont">
             {{#projects}}
                 <div class="card">
-                    <h1 class="tit">{{pTitle}}</h1>
+                    <h1 class="tit">{{title}}</h1>
                     <h2><strong>Module:</strong> {{module}}</h2>
                     <h2><strong>Due Date:</strong> {{due}}</h2>
                     <h2><strong>Completion Date:</strong></h2>
@@ -47,10 +43,11 @@
                     </div>
                 </div>
             {{/projects}}
-            {{^projects}}
-                Yayy!!! No Projects due.
-            {{/projects}}
         </div>
+        {{^projects}}
+            <i class="fas fa-file-alt fa-10x" style="color: #7684FA;"></i>
+            <h3 class="try">Try adding some projects to see them here</h3>
+        {{/projects}}
     </div>
     <script>
         function openNav() {

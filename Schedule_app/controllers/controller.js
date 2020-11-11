@@ -2,50 +2,22 @@ const { response } = require('express');
 const guestbookDAO = require('../models/model');
 const db = new guestbookDAO('./projects.db');
 
-exports.landing_page = function(req, res){
+exports.dashboard = function(req, res){
 
-    res.render('projects', {
-        'title' : 'Projects',
-        'date' : new Date(),
-        'projects' : [
-            {
-                'pTitle' : 'Electronic Health records',
-                'module' : 'Big Data',
-                'due' : '13-11-2020'
-            },
-            {
-                'pTitle' : 'Unify Radio',
-                'module' : 'AADP',
-                'due' : '05-07-2020'
-            },
-            {
-                'pTitle' : 'Coursework Scheduling Application',
-                'module' : 'Wep Development',
-                'due' : '25-10-2021'
-
-            }
-        ]
-    })
-    /*
-    db.getAllEntries().then((list) => {
+    db.getAllProjects().then((list) => {
         res.render('projects', {
-            'title' : 'Projects',
+            'heading' : 'Projects',
             'projects' : list
         });
         console.log('Promise resolved');
     }).catch((err) => {
         console.log('Promise rejected', err);
     })
-    */
 }
 
-/*
-exports.show_new_entries = function(req, res) {
-    res.render('newEntry', {
-        'title' : 'Guest Book'
-    })
+exports.add_project = function(req, res) {
+    res.render('addProject');
 }
-*/
 
 /*
 exports.show_user_entries = function(req, res) {
@@ -63,19 +35,12 @@ exports.show_user_entries = function(req, res) {
 }
 */
 
-/*
-exports.post_new_entry = function(req, res) {
-    console.log('processing post-new_entry controller');
+exports.post_project = function(req, res) {
+    console.log('processing post_project controller');
 
-    if (!req.body.author) {
-        response.status(400).send('Entries must have an author.');
-        return;
-    }
-
-    db.addEntry(req.body.author, req.body.subject, req.body.contents);
+    db.addEntry(req.body.title, req.body.module, req.body.due);
     res.redirect('/');
 }
-*/
 
 /*
 exports.new_entry = function(req, res){

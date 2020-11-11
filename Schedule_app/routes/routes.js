@@ -2,11 +2,11 @@ const express = require('express');
 const controller = require('../controllers/controller');
 const router = express.Router();
 
-router.get("/", controller.landing_page);
+router.get("/", controller.dashboard);
 
-//router.get('/new', controller.show_new_entries);
+router.get('/new', controller.add_project);
 
-//router.post('/new', controller.post_new_entry);
+router.post('/new', controller.post_project);
 
 //router.get('/posts/:author', controller.show_user_entries);
 

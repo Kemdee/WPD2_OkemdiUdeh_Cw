@@ -122,6 +122,20 @@ body {
     bottom: 30px;
 }
 
+.fa-file-alt {
+    position: relative;
+    left: 45%;
+    bottom: 300px;
+}
+
+.try {
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 300px;
+}
+
 .card-cont {
     display: grid;
     width: 95%;
