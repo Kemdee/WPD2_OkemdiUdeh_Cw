@@ -25,15 +25,17 @@ body {
     font-size: 1.7em;
     text-align: center;
     font-weight: 200;
+}
+
+.fa-user-circle {
     position: relative;
-    bottom: 25px;
+    top: 20px;
+    left: 95px;
 }
 
 .options {
     width: 55%;
     margin: 0 auto;
-    position: relative;
-    bottom: 30px;
     color: rgb(92, 91, 91);
     margin-bottom: 25px;
 }
@@ -42,7 +44,7 @@ body {
     display: inline;
     position: relative;
     left: 10px;
-    color: rgb(92, 91, 91);
+    color: rgb(119, 118, 118);
     font-weight: 400;
     font-size: 1em;
 }
