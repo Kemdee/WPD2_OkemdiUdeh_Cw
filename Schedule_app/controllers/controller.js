@@ -6,6 +6,7 @@ exports.landing_page = function(req, res){
 
     res.render('projects', {
         'title' : 'Projects',
+        'date' : new Date(),
         'projects' : [
             {
                 'pTitle' : 'Electronic Health records',
