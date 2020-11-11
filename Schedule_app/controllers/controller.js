@@ -9,12 +9,18 @@ exports.landing_page = function(req, res){
         'projects' : [
             {
                 'pTitle' : 'Electronic Health records',
+                'module' : 'Big Data',
+                'due' : '13-11-2020'
             },
             {
                 'pTitle' : 'Unify Radio',
+                'module' : 'AADP',
+                'due' : '05-07-2020'
             },
             {
                 'pTitle' : 'Coursework Scheduling Application',
+                'module' : 'Wep Development',
+                'due' : '25-10-2021'
 
             }
         ]

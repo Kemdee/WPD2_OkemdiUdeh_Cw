@@ -8,9 +8,37 @@
         <div class="grid1-item" id="nav">
             <img src="../prof.png" alt="Prof">
             <h1>Welcome User!</h1>
+            <div class="options">
+                <i class="fas fa-tachometer-alt fa-1.8x"></i>
+                <h3>Dashboard</h3>
+            </div>
+            <div class="options">
+                <i class="fas fa-plus-circle fa-1.8x"></i>
+                <h3>Add Project</h3>
+            </div>
+             <div class="options">
+                <i class="fas fa-minus-circle fa-1.8x"></i>
+                <h3>Remove Project</h3>
+            </div>
+            <div class="options">
+                <i class="fas fa-exchange-alt fa-1.8x"></i>
+                <h3>Modify Project</h3>
+            </div>
+            <div class="options">
+                <i class="fas fa-share fa-1.8x"></i>
+                <h3>Share Project</h3>
+            </div>
+            <div class="options">
+                <i class="fas fa-cog fa-1.8x"></i>
+                <h3>Settings</h3>
+            </div>
+            <div class="options">
+                <i class="fas fa-sign-out-alt fa-1.8x"></i>
+                <h3>Logout</h3>
+            </div>
         </div>
         <div class="grid1-item">
-            <h1>{{title}}</h1>
+            <h1>My {{title}}</h1>
             {{! <div>
             <a href="/new" class="btn btn-primary">
             Write in the guestbook
@@ -20,7 +48,9 @@
                 {{#projects}}
                 <div class="grid-item">
                     <h1 id="tit">{{pTitle}}</h1>
-                    <h2>{{module}}</h2>
+                    <h2><strong>Module:</strong> {{module}}</h2>
+                    <h2><strong>Due Date:</strong> {{due}}</h2>
+                    <h2><strong>Completion Date:</strong></h2>
                 </div>
                 {{/projects}}
                 {{^projects}}
