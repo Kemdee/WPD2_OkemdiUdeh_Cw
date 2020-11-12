@@ -43,6 +43,17 @@ class GuestBook {
             }
         })
     }
+
+    removeProject(title) {
+        this.db.remove({'title': title}, function(err, doc) {
+            if (err) {
+                console.log('Error deleting document', err);
+            }
+            else {
+                console.log('document deleted from the database', doc);
+            }
+        })
+    }
 };
 
 module.exports = GuestBook;

@@ -10,6 +10,10 @@ router.post('/new', controller.post_project);
 
 router.get('/login', controller.login);
 
+router.get('/remove', controller.remove_project);
+
+router.post('/remove', controller.post_remove);
+
 //router.get('/posts/:author', controller.show_user_entries);
 
 //router.get('/guestbook', controller.entries_list);

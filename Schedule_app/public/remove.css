@@ -182,13 +182,14 @@ body {
 
 .pic {
     width: 400px;
-    background-image: url('../add.jpg');
+    background-image: url('../rem.jpg');
     height: 570px;
     position: fixed;
     z-index: 1;
     overflow-x: hidden;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    background-size: cover;
 }
 
 .details {

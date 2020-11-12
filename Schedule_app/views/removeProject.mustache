@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {{>header}}
-    <link rel="stylesheet" href="../add.css">
+    <link rel="stylesheet" href="../remove.css">
 </head>
 <body onload="loading()">
     <div id="loader"></div>
@@ -13,7 +13,7 @@
             <h1>Welcome User!</h1>
             <a href="/"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
-            <a href="/remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
+            <a href="#remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
             <a href="#modify"><i class="fas fa-exchange-alt fa-1.8x"></i> Modify Project</a>
             <a href="#share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="#completed"><i class="fas fa-list-ul fa-1.8x"></i> Completed</a>
@@ -23,8 +23,8 @@
         <div class="icon-scroll" id="scroll-icon">
         <div class="icon-bar" onclick="openNav()" id="myIcons">
             <a href="#"><i class="fas fa-tachometer-alt"></i></a> 
-            <a class="active" href="#"><i class="fas fa-plus-circle" style="color: #fff;"></i></a> 
-            <a href="#"><i class="fas fa-minus-circle"></i></a> 
+            <a href="#"><i class="fas fa-plus-circle"></i></a> 
+            <a class="active" href="#"><i class="fas fa-minus-circle" style="color: #fff;"></i></a> 
             <a href="#"><i class="fas fa-exchange-alt"></i></a>
             <a href="#"><i class="fas fa-share"></i></a>
             <a href="#"><i class="fas fa-list-ul"></i></a>
@@ -35,19 +35,13 @@
     <div class="main" id="myMain">
         <div class="pic"></div>
         <div class="details">
-            <h1>New Project</h1>
+            <h1>Remove Project</h1>
             <form method="post" role="form">
                 <div class="form-group">
                     <input type="text" id="title" name="title" placeholder="Title" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="module" name="module" placeholder="Module" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="due" name="due" placeholder="Due date" required>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Add">
+                    <input type="submit" value="Remove">
                 </div>
             </form>
         </div>

@@ -14,15 +14,16 @@
             <h1>Welcome User!</h1>
             <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
-            <a href="#remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
+            <a href="/remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
             <a href="#modify"><i class="fas fa-exchange-alt fa-1.8x"></i> Modify Project</a>
             <a href="#share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="#completed"><i class="fas fa-list-ul fa-1.8x"></i> Completed</a>
             <a href="#settings"><i class="fas fa-cog fa-1.8x"></i> Settings</a>
             <a href="#logout"><i class="fas fa-sign-out-alt fa-1.8x"></i> Logout</a>
         </div>
+        <div class="icon-scroll" id="scroll-icon">
         <div class="icon-bar" onclick="openNav()" id="myIcons">
-            <a class="active" href="#"><i class="fas fa-tachometer-alt"></i></a> 
+            <a class="active" href="#"><i class="fas fa-tachometer-alt" style="color: #fff;"></i></a> 
             <a href="#"><i class="fas fa-plus-circle"></i></a> 
             <a href="#"><i class="fas fa-minus-circle"></i></a> 
             <a href="#"><i class="fas fa-exchange-alt"></i></a>
@@ -30,6 +31,7 @@
             <a href="#"><i class="fas fa-list-ul"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
             <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
         </div>
         <div class="main" id="myMain">
             <h1>My {{heading}}</h1>
@@ -51,14 +53,14 @@
                 {{/projects}}
             </div>
             {{^projects}}
-                <i class="fas fa-tasks fa-10x" style="color: #7684FA;"></i>
+                <i class="fas fa-tasks fa-8x" style="color: #7684FA;"></i> 
                 <h3 class="try">Try adding some projects to see them here</h3>
             {{/projects}}
         </div>
     </div>
     <script>
         function openNav() {
-            document.getElementById('myIcons').style.display = 'none';
+            document.getElementById('scroll-icon').style.display = 'none';
             document.getElementById("myNav").style.width = "270px";
             document.getElementById("myMain").style.marginLeft = "270px";
         }
@@ -66,7 +68,7 @@
         function closeNav() {
             document.getElementById("myNav").style.width = "0";
             document.getElementById("myMain").style.marginLeft= "100px";
-            setTimeout(() => { document.getElementById('myIcons').style.display = 'block'; }, 1000);
+            setTimeout(() => { document.getElementById('scroll-icon').style.display = 'block'; }, 1000);
         }
 
         var myVar;

@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -124,7 +124,26 @@ body {
     right: 25px;
     font-size: 36px;
     margin-left: 5px;
-  }
+}
+
+.icon-scroll {
+    position: relative;
+    -webkit-animation-name: animateleft;
+    -webkit-animation-duration: 1s;
+    animation-name: animateleft;
+    animation-duration: 1s;
+    transition-timing-function: ease;
+}
+
+@-webkit-keyframes animateleft {
+    from { left:-70px; opacity:0 } 
+    to { left:0px; opacity:1 }
+}
+  
+@keyframes animateleft { 
+    from{ left:-70px; opacity:0 } 
+    to{ left:0; opacity:1 }
+}
 
 .icon-bar {
     width: 70px;
@@ -162,7 +181,7 @@ body {
     margin-left: 100px;
     padding: 0px 10px;
     transition: margin-left .5s;
-    height: 600px;
+    height: 550px;
 }
 
 .main h1 {

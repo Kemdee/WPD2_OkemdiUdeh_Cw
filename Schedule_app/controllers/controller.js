@@ -25,6 +25,16 @@ exports.login = function(req, res) {
     res.render('login');
 }
 
+exports.remove_project = function(req, res) {
+    res.render('removeProject');
+}
+
+exports.post_remove = function(req, res) {
+    console.log('processing remove_project controller')
+
+    db.removeProject(req.body.title);
+    res.redirect('/');
+}
 /*
 exports.show_user_entries = function(req, res) {
     console.log('filtering author name', req.params.author);
