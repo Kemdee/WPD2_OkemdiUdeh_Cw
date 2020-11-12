@@ -6,7 +6,47 @@
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgba(0,0,0,0.05);
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    margin: -75px 0 0 -75px;
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #7684FA;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+  
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+  
+#content {
+    display: none;
 }
 
 .main {
@@ -17,6 +57,12 @@ body {
     margin-top: 20px;
     border-radius: 25px;
     background-color: #fff;
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s;
+    transition-timing-function: ease;
 }
 
 .pic {
@@ -72,6 +118,8 @@ input[type=submit] {
     padding: 14px 20px;
     border: none;
     border-radius: 25px;
+    font-size: 17px;
+    font-weight: 500;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);

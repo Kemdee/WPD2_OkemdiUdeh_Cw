@@ -12,7 +12,6 @@ class GuestBook {
         }
     }
 
-
     getAllProjects() {
         return new Promise((resolve, reject) => {
             this.db.find({}, function(err, projects) {
@@ -27,7 +26,7 @@ class GuestBook {
         })
     }
 
-    addEntry(title, module, due) {
+    addProject(title, module, due) {
         var project = {
             title: title,
             module: module,
@@ -42,34 +41,6 @@ class GuestBook {
             else {
                 console.log('document inserted into the database', doc);
             }
-        })
-    }
-
-    getPetersEntries() {
-        return new Promise((resolve, reject) => {
-            this.db.find({author: 'Peter'}, function(err, entries) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    resolve(entries);
-                    console.log('getPetersEntries() returns: ', entries);
-                }
-            })
-        })
-    }
-
-    getEntriesByUser(authorName) {
-        return new Promise((resolve, reject) => {
-            this.db.find({author: authorName}, function(err, entries) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    resolve(entries);
-                    console.log('getEntriesByUser() returns: ', entries);
-                }
-            })
         })
     }
 };

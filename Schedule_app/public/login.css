@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    height: 648px;
+    width: 100%;
+    background-image: url('../login.jpg');
+    background-size: cover;
+}
+
+.main::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 648px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main h1 {
+    text-align: center;
+    color: #fff;
+    position: relative;
+    top: 150px;
+    font-size: 30px;
+}
+
+.space {
+    padding: 0.1px;
+}
+
+.login {
+    height: 300px;
+    width: 30%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 25px;
+    position: relative;
+    top: 150px;
+}
+
+input[type=text] {
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 25px;
+    position: relative;
+    left: 80px;
+    top: 50px;
+
+}
+
+input[type=submit] {
+    background-color: #7684FA;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    position: relative;
+    left: 140px;
+    top: 80px;
+}

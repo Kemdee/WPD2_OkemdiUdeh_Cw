@@ -3,10 +3,12 @@ const guestbookDAO = require('../models/model');
 const db = new guestbookDAO('./projects.db');
 
 exports.dashboard = function(req, res){
-
+    
     db.getAllProjects().then((list) => {
+
         res.render('projects', {
             'heading' : 'Projects',
+            'date' : new Date(),
             'projects' : list
         });
         console.log('Promise resolved');
@@ -17,6 +19,10 @@ exports.dashboard = function(req, res){
 
 exports.add_project = function(req, res) {
     res.render('addProject');
+}
+
+exports.login = function(req, res) {
+    res.render('login');
 }
 
 /*
@@ -38,7 +44,7 @@ exports.show_user_entries = function(req, res) {
 exports.post_project = function(req, res) {
     console.log('processing post_project controller');
 
-    db.addEntry(req.body.title, req.body.module, req.body.due);
+    db.addProject(req.body.title, req.body.module, req.body.due);
     res.redirect('/');
 }
 

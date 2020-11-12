@@ -4,8 +4,9 @@
     {{>header}}
     <link rel="stylesheet" href="../add.css">
 </head>
-<body>
-    <section class="main">
+<body onload="loading()">
+    <div id="loader"></div>
+    <section class="main" style="display:none;" id="content">
         <div class="pic"></div>
         <div class="details">
             <h1>Add a new Project</h1>
@@ -23,10 +24,22 @@
                     <input type="text" id="due" name="due" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Post project">
+                    <input type="submit" value="Add">
                 </div>
             </form>
         </div>
     </section>
+    <script>
+        var myVar;
+
+        function loading() {
+            myVar = setTimeout(showPage, 1500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+    </script>
 </body>
 </html>
