@@ -68,7 +68,7 @@ body {
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
-    transition: 0.8s;
+    transition: 1.2s;
     transition-timing-function: ease;
     transition-delay: 0.05s;
 }
@@ -218,6 +218,7 @@ input[type=text] {
     font-family: 'Montserrat', sans-serif;
     border-radius: 25px;
     font-weight: 600;
+    outline: none;
 }
 
 input[type=text]:hover {
