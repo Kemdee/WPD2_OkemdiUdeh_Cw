@@ -2,6 +2,10 @@ const { response } = require('express');
 const guestbookDAO = require('../models/model');
 const db = new guestbookDAO('./projects.db');
 
+exports.welcome = function(req, res) {
+    res.render('welcome');
+}
+
 exports.dashboard = function(req, res){
     
     db.getAllProjects().then((list) => {
@@ -37,7 +41,7 @@ exports.post_remove = function(req, res) {
     console.log('processing remove_project controller')
 
     db.removeProject(req.body.title);
-    res.redirect('/');
+    res.redirect('/dashboard');
 }
 /*
 exports.show_user_entries = function(req, res) {
@@ -59,7 +63,7 @@ exports.post_project = function(req, res) {
     console.log('processing post_project controller');
 
     db.addProject(req.body.title, req.body.module, req.body.due);
-    res.redirect('/');
+    res.redirect('/dashboard');
 }
 
 /*

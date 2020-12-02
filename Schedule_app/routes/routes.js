@@ -2,7 +2,9 @@ const express = require('express');
 const controller = require('../controllers/controller');
 const router = express.Router();
 
-router.get("/", controller.dashboard);
+router.get("/", controller.welcome);
+
+router.get("/dashboard", controller.dashboard);
 
 router.get('/new', controller.add_project);
 

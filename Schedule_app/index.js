@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('./routes/routes.js');
+const router1 = require('./routes/users.js');
 const path = require('path');
 const mustache = require('mustache-express');
 const bodyParser = require('body-parser');
@@ -19,3 +20,4 @@ app.listen(3000, () => {
 })
 
 app.use('/', router);
+app.use('/users', router1);
