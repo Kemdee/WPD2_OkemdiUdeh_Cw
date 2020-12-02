@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+    <link rel="stylesheet" href="../register.css">
+</head>
+<body onload="loading()">
+    <div id="loader"></div>
+    <div style="display:none;" id="content" class="animate-bottom">
+    <div class="main" id="myMain">
+        <div class="pic"></div>
+        <div class="details">
+            <h1>Create Account</h1>
+            <form method="post" role="form">
+                <div class="form-group">
+                    <i class="fas fa-user" style="color: #666;"></i>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope" style="color: #666;"></i>
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock" style="color: #666;"></i>
+                    <input type="text" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+            <div class="cre">
+            <a href="/login" class="create">Sign In</a>
+            <i class="fas fa-arrow-right fa-sm"></i>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var myVar;
+
+        function loading() {
+            myVar = setTimeout(showPage, 1500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+    </script>
+</body>
+</html>

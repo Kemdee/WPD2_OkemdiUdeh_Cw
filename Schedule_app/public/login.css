@@ -106,6 +106,7 @@ form {
     display: flex;
 }
 
+
 .fa-envelope {
     position: relative;
     top: 20px;
@@ -166,12 +167,13 @@ input[type=submit]:hover {
     top: 150px;
     color: #888888;
     width: 30%;
+    text-decoration: none;
 }
 
 .fa-arrow-right {
     position: relative;
-    left: 355px;
-    top: 120px;
+    left: 225px;
+    top: 151px;
 }
 
 .cre:hover {
@@ -179,6 +181,6 @@ input[type=submit]:hover {
     cursor: pointer;
 }
 
-.cre h3:hover {
+.cre a:hover {
     color: #7684FA;
 }

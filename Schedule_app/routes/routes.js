@@ -14,6 +14,8 @@ router.get('/remove', controller.remove_project);
 
 router.post('/remove', controller.post_remove);
 
+router.get('/register', controller.register);
+
 //router.get('/posts/:author', controller.show_user_entries);
 
 //router.get('/guestbook', controller.entries_list);
