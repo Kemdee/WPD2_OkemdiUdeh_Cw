@@ -11,7 +11,7 @@
         <div class="nav" id="myNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
-            <h1>Welcome User!</h1>
+            <h1>Welcome {{user}}!</h1>
             <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
             <a href="/remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
@@ -19,7 +19,7 @@
             <a href="#share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="#completed"><i class="fas fa-list-ul fa-1.8x"></i> Completed</a>
             <a href="#settings"><i class="fas fa-cog fa-1.8x"></i> Settings</a>
-            <a href="/login"><i class="fas fa-sign-out-alt fa-1.8x"></i> Logout</a>
+            <a href="/users/logout"><i class="fas fa-sign-out-alt fa-1.8x"></i> Logout</a>
         </div>
         <div class="icon-scroll" id="scroll-icon">
         <div class="icon-bar" onclick="openNav()" id="myIcons">

@@ -96,6 +96,7 @@ body {
 form {
     position: relative;
     top: 100px;
+    margin-top: 0px;
 }
 
 .form-group {
@@ -119,7 +120,7 @@ form {
     left: 40px;
 }
 
-input[type=text] {
+input[type=email], input[type=password] {
     width: 100%;
     padding: 20px 0px;
     padding-left: 50px;
@@ -132,7 +133,11 @@ input[type=text] {
     outline: none;
 }
 
-input[type=text]:focus {
+input[type=email]:focus {
+    box-shadow: 0 10px 18px 0 rgba(118,132,250,0.4);
+}
+
+input[type=password]:focus {
     box-shadow: 0 10px 18px 0 rgba(118,132,250,0.4);
 }
   
@@ -183,4 +188,22 @@ input[type=submit]:hover {
 
 .cre a:hover {
     color: #7684FA;
+}
+
+.alert {
+    position: relative;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 0px;
+    color: #888;
+    top: 65px;
+    padding: 10px 0px;
+    background-color: #D4EDDA;
+    border-radius: 10px;
+    width: 40%;
+    margin: 0 auto;
+}
+
+#inc {
+    background-color: #F8D7DA;
 }

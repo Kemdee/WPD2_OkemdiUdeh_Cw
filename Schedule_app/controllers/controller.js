@@ -1,9 +1,102 @@
 const { response } = require('express');
 const guestbookDAO = require('../models/model');
 const db = new guestbookDAO('./projects.db');
+const User = require("../models/user");
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+
 
 exports.welcome = function(req, res) {
-    res.render('welcome');
+    res.render('welcome', {
+        'heading' : 'To-Do'
+    });
+}
+
+exports.user_login = function(req, res) {
+    res.render('login', {
+        'heading' : 'Login',
+        'alert1' : res.locals.success_msg,
+        'alert2' : res.locals.error_msg,
+        'alert3' : res.locals.error
+    });
+}
+
+exports.user_post_register = function(req, res) {
+
+    const {username,email, password, password2} = req.body;
+    let errors = [];
+    console.log(' Username ' + username+ ' email :' + email+ ' pass:' + password);
+    
+    if(!username || !email || !password || !password2) {
+        errors.push({msg : "Please fill in all fields"})
+    }    
+    //check if password is more than 6 characters
+    else if(password.length < 6 ) {
+        errors.push({msg : 'Password must be at least 6 characters'})
+    }
+    //check if match
+    else if(password !== password2) {
+        errors.push({msg : "Passwords don't match"});
+    }
+    else {
+        console.log('No errors');
+    }
+
+    if(errors.length > 0 ) {
+        res.render('register', {
+            'heading' : 'Register',
+            'errors' : errors
+            })
+    } else {
+        //validation passed
+        User.findOne({email : email}).exec((err,user)=>{
+            console.log(user);   
+            if(user) {
+                errors.push({msg: 'Email already registered'});
+                res.render('register', {
+                    'heading' : 'Register',
+                    'errors' : errors
+                    })
+            } else {
+                const newUser = new User({
+                    username : username,
+                    email : email,
+                    password : password
+                });
+                //hash password
+                bcrypt.genSalt(10,(err,salt)=> 
+                bcrypt.hash(newUser.password,salt,
+                (err,hash)=> {
+                    if(err) throw err;
+                        //save pass to hash
+                        newUser.password = hash;
+                        //save user
+                        newUser.save()
+                        .then((value)=>{
+                        console.log(value)
+                        req.flash('success_msg','You have now registered!')
+                        res.redirect('/users/login');
+                    })
+                    .catch(value=> console.log(value));
+                      
+                }));
+            }
+        })
+    }
+}
+
+exports.user_post_login = function(req, res, next) {
+    passport.authenticate('local',{
+        successRedirect : '/dashboard',
+        failureRedirect : '/users/login',
+        failureFlash : true,
+    })(req,res,next);
+}
+
+exports.user_logout = function(req, res) {
+    req.logout();
+    req.flash('success_msg','Now logged out');
+    res.redirect('/users/login');
 }
 
 exports.dashboard = function(req, res){
@@ -12,6 +105,7 @@ exports.dashboard = function(req, res){
 
         res.render('projects', {
             'heading' : 'Projects',
+            'user' : req.user.username,
             'date' : new Date(),
             'projects' : list
         });
@@ -22,19 +116,25 @@ exports.dashboard = function(req, res){
 }
 
 exports.add_project = function(req, res) {
-    res.render('addProject');
+    res.render('addProject', {
+        'heading' : 'New'
+    });
 }
 
-exports.login = function(req, res) {
-    res.render('login');
-}
+// exports.login = function(req, res) {
+//     res.render('login');
+// }
 
 exports.register = function(req, res) {
-    res.render('register');
+    res.render('register', {
+        'heading' : 'Register'
+    });
 }
 
 exports.remove_project = function(req, res) {
-    res.render('removeProject');
+    res.render('removeProject', {
+        'heading' : 'Remove'
+    });
 }
 
 exports.post_remove = function(req, res) {
@@ -78,3 +178,4 @@ exports.peters_entries = function(req, res){
     db.getPetersEntries();
 }
 */
+    

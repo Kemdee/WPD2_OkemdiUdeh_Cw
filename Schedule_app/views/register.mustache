@@ -11,25 +11,32 @@
         <div class="pic"></div>
         <div class="details">
             <h1>Create Account</h1>
-            <form method="post" role="form">
+            {{#errors}}
+                <p id="error">{{msg}}</p>
+            {{/errors}}
+            <form method="POST" action="/users/register">
                 <div class="form-group">
                     <i class="fas fa-user" style="color: #666;"></i>
-                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="username" name="username" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <i class="fas fa-envelope" style="color: #666;"></i>
-                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <i class="fas fa-lock" style="color: #666;"></i>
-                    <input type="text" id="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Create Password">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock" style="color: #666;"></i>
+                    <input type="password" name="password2" placeholder="Confirm Password">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Register">
                 </div>
             </form>
             <div class="cre">
-            <a href="/login" class="create">Sign In</a>
+            <a href="/users/login" class="create">Sign In</a>
             <i class="fas fa-arrow-right fa-sm"></i>
             </div>
         </div>

@@ -1,16 +1,17 @@
 const express = require('express');
 const controller = require('../controllers/controller');
+const {ensureAuthenticated} = require("../config/auth.js")
 const router = express.Router();
 
 router.get("/", controller.welcome);
 
-router.get("/dashboard", controller.dashboard);
+router.get("/dashboard", ensureAuthenticated, controller.dashboard);
 
-router.get('/new', controller.add_project);
+router.get('/new', ensureAuthenticated, controller.add_project);
 
 router.post('/new', controller.post_project);
 
-router.get('/login', controller.login);
+//router.get('/login', controller.login);
 
 router.get('/remove', controller.remove_project);
 
