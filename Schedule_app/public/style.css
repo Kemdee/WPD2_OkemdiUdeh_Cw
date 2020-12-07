@@ -3,6 +3,10 @@
     
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -101,7 +105,7 @@ body {
     display: block;
     font-weight: 400;
     margin-bottom: 15px;
-    width: 175px;
+    width: 180px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -151,7 +155,7 @@ body {
     height: 70%;
     position: fixed;
     z-index: 1;
-    margin-top: 40px;
+    margin-top: 60px;
     overflow-x: hidden;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -214,6 +218,19 @@ body {
     bottom: 280px;
 }
 
+.alert {
+    position: relative;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    padding: 10px 0px;
+    background-color: #D4EDDA;
+    border-radius: 10px;
+    width: 40%;
+    margin: 0 auto;
+}
+
+
 .card-cont {
     display: grid;
     width: 95%;
@@ -229,6 +246,10 @@ body {
     transition: 0.3s;
     border-radius: 25px;
     transition: transform .2s;
+}
+
+.card a {
+    text-decoration: none;
 }
 
 
@@ -275,11 +296,9 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    margin: 0 auto;
     position: relative;
     bottom: 33px;
-    left: 150px;
-    transition:  .2s;
-    transition-timing-function: ease;
 }
 
 .modify:hover {
@@ -291,7 +310,7 @@ body {
     color:  #fff;
     position: relative;
     left: 7px;
-    bottom: 28px;
+    top: 9px;
 }
 
 .remove:hover {

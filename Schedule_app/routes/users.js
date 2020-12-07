@@ -7,7 +7,7 @@ router.get('/login', controller.user_login);
 
 router.get('/register',(req,res)=>{
     res.render('register')
-    })
+})
 //Register handle
 router.post('/register', controller.user_post_register);
 
@@ -18,10 +18,12 @@ router.get('/logout', controller.user_logout);
 
 router.use(function(req, res) {
     res.status(404);
-    res.type('text/plain')
-    res.send('404 Not found');
+    res.render('404');
 })
 
-
+router.use(function(err, req, res, next){
+    res.status(500);
+    res.render('500');
+})
 
 module.exports  = router;

@@ -26,6 +26,11 @@ const ProjectSchema = new mongoose.Schema({
         required: true
     },
 
+    milestones: {
+        type: String,
+        
+    },
+
     completion: {
         type: String
     }

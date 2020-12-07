@@ -107,16 +107,20 @@ exports.dashboard = async(req, res) =>{
             'heading' : 'Projects',
             'date' : new Date(),
             user: req.user.username,
+            'alert' : res.locals.message,
             'project' : project
         })
     } catch(err) {
         console.error(err);
+        res.render('500');
     }
 }
 
 exports.add_project = function(req, res) {
+    
     res.render('addProject', {
-        'heading' : 'New'
+        'heading' : 'New',
+        user: req.user.username
     });
 }
 
@@ -130,31 +134,24 @@ exports.register = function(req, res) {
     });
 }
 
-exports.remove_project = function(req, res) {
-    res.render('removeProject', {
-        'heading' : 'Remove'
-    });
-}
-
-exports.post_remove = function(req, res) {
-    console.log('processing remove_project controller')
-
-    db.removeProject(req.body.title);
-    res.redirect('/dashboard');
-}
-
-exports.post_project = function(req, res) {
+exports.post_project = async(req, res) =>{
     console.log('processing post_project controller');
 
     try {
         req.body.user = req.user.id;
-        Project.create(req.body);
+        await Project.create(req.body);
+        req.flash('message', 'Your project has been successfully added!'); 
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
+        res.render('500');
     }
     if(!req.body.title) {
         res.status(400).send("Coursework Title required");
+        return;
+    }
+    if(!req.body.milestones) {
+        res.status(400).send("Milestone required");
         return;
     }
 }
@@ -163,10 +160,11 @@ exports.delete_project = async (req, res) => {
     console.log('Deleting coursework');
     try {
         await Project.deleteOne({ _id: req.params.id });
+        req.flash('message', 'Your project has been successfully removed!'); 
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-    
+        res.render('500');
     }
 }
 
@@ -190,10 +188,85 @@ exports.mark_complete = async (req, res) => {
         console.log(convertDate(date));
 
         await Project.updateOne({ _id: req.params.id }, {status: 'Complete', completion: convertDate(date)});
+        req.flash('message', 'Congratulations on completing your project!'); 
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-    
+        res.render('500');
+    }
+}
+
+exports.view_project = async (req, res) => {
+    try {
+        const project = await Project.find({ _id: req.params.id }).lean();
+        res.render('viewProject', {
+            user: req.user.username,
+            project
+        })
+    } catch (error) {
+        console.error(err);
+        res.render('500');
+    }
+}
+
+exports.edit_project = async (req, res) => {
+    try {
+        const project = await Project.find({ _id: req.params.id }).lean();
+        res.render('editProject', {
+            user: req.user.username,
+            project
+        })
+    } catch (error) {
+        console.error(err);
+        res.render('500');
+    }
+}
+
+exports.update_project = async (req, res) => {
+    try {
+        let project = await Project.findById(req.params.id);
+
+        project = await Project.findOneAndUpdate({ _id: req.params.id }, req.body, {
+            new: true,
+            runValidators: true
+    });
+    req.flash('message', 'Your project has been successfully updated!'); 
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+        res.render('500');
+    }
+}
+
+exports.view_completed = async(req, res) => {
+    try {
+        const project = await Project.find({ user: req.user, status:"Complete" }).lean();
+        console.log(project);
+        res.render('complete', {
+            'heading' : 'Projects',
+            'date' : new Date(),
+            user: req.user.username,
+            'project' : project
+        })
+    } catch(err) {
+        console.error(err);
+        res.render('500');
+    }
+}
+
+exports.view_incomplete = async(req, res) => {
+    try {
+        const project = await Project.find({ user: req.user, status:"In Progress" }).lean();
+        console.log(project);
+        res.render('incomplete', {
+            'heading' : 'Projects',
+            'date' : new Date(),
+            user: req.user.username,
+            'project' : project
+        })
+    } catch(err) {
+        console.error(err);
+        res.render('500');
     }
 }
 

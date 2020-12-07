@@ -9,42 +9,34 @@ router.get("/dashboard", ensureAuthenticated, controller.dashboard);
 
 router.get('/new', ensureAuthenticated, controller.add_project);
 
-router.post('/new', controller.post_project);
+router.post('/new', ensureAuthenticated, controller.post_project);
 
 //router.get('/login', controller.login);
 
-router.get('/remove', controller.remove_project);
+router.get('/project/:id', ensureAuthenticated, controller.view_project);
 
-router.post('/remove', controller.post_remove);
+router.get('/delete/:id', ensureAuthenticated, controller.delete_project);
 
-router.get('/delete/:id', controller.delete_project);
+router.get('/edit/:id', ensureAuthenticated, controller.edit_project);
 
-router.get('/complete/:id', controller.mark_complete);
+router.post('/edit/:id', ensureAuthenticated, controller.update_project);
+
+router.get('/complete', ensureAuthenticated, controller.view_completed);
+
+router.get('/incomplete', ensureAuthenticated, controller.view_incomplete);
+
+router.get('/complete/:id', ensureAuthenticated, controller.mark_complete);
 
 router.get('/register', controller.register);
 
-//router.get('/posts/:author', controller.show_user_entries);
-
-//router.get('/guestbook', controller.entries_list);
-
-/*
-router.get('/about', (req, res) => {
-    res.redirect('about.html');
-});
-*/
-
-//router.get('/peter', controller.peters_entries);
-
 router.use(function(req, res) {
     res.status(404);
-    res.type('text/plain')
-    res.send('404 Not found');
+    res.render('404');
 })
 
 router.use(function(err, req, res, next){
     res.status(500);
-    res.type('text/plain');
-    res.send('Internal Server Error');
+    res.render('500');
 })
 
 module.exports = router;
