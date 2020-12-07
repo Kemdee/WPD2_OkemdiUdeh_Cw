@@ -15,7 +15,6 @@
             <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
             <a href="/remove"><i class="fas fa-minus-circle fa-1.8x"></i> Remove Project</a>
-            <a href="#modify"><i class="fas fa-exchange-alt fa-1.8x"></i> Modify Project</a>
             <a href="#share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="#completed"><i class="fas fa-list-ul fa-1.8x"></i> Completed</a>
             <a href="#settings"><i class="fas fa-cog fa-1.8x"></i> Settings</a>
@@ -26,7 +25,6 @@
             <a class="active" href="#"><i class="fas fa-tachometer-alt" style="color: #fff;"></i></a> 
             <a href="#"><i class="fas fa-plus-circle"></i></a> 
             <a href="#"><i class="fas fa-minus-circle"></i></a> 
-            <a href="#"><i class="fas fa-exchange-alt"></i></a>
             <a href="#"><i class="fas fa-share"></i></a>
             <a href="#"><i class="fas fa-list-ul"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
@@ -34,38 +32,40 @@
         </div>
         </div>
         <div class="main" id="myMain">
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Some text in the Modal..</p>
-                </div>
-
-            </div>
             <h1>My {{heading}}</h1>
             <h3 class="date">{{date}}</h3>
             <div class="card-cont">
-                {{#projects}}
+                {{#project}}
                     <div class="card">
                         <h1 class="tit">{{title}}</h1>
                         <h2><strong>Module:</strong> {{module}}</h2>
                         <h2><strong>Due Date:</strong> {{due}}</h2>
-                        <h2><strong>Status:</strong> In Progress</h2>
-                        <button id="myBtn">View Milestones</button>
+                        <h2><strong>Status:</strong> {{status}}</h2>
+                        {{#completion}}
+                        <h2><strong>Completion Date:</strong> {{completion}}</h2>
+                        {{/completion}}
                         <div class="remove">
-                            <i class="fas fa-times fa-lg"></i>
+                            <a href="/delete/{{_id}}">
+                                <i class="fas fa-times fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="modify" id="mod">
+                            <a href="#">
+                                <i class="fas fa-exchange-alt fa-lg"></i>
+                            </a>
                         </div>
                         <div class="check">
-                            <i class="fas fa-check fa-lg"></i>
+                            <a href="/complete/{{_id}}">
+                                <i class="fas fa-check fa-lg"></i>
+                            </a>
                         </div>
                     </div>
-                {{/projects}}
+                {{/project}}
             </div>
-            {{^projects}}
+            {{^project}}
                 <i class="fas fa-tasks fa-8x" style="color: #7684FA;"></i> 
                 <h3 class="try">Try adding some projects to see them here</h3>
-            {{/projects}}
+            {{/project}}
         </div>
     </div>
     <script>
@@ -73,11 +73,13 @@
             document.getElementById('scroll-icon').style.display = 'none';
             document.getElementById("myNav").style.width = "270px";
             document.getElementById("myMain").style.marginLeft = "270px";
+            document.getElementById("mod").style.left = "125px";
         }
 
         function closeNav() {
             document.getElementById("myNav").style.width = "0";
             document.getElementById("myMain").style.marginLeft= "100px";
+            document.getElementById("mod").style.left = "150px";
             setTimeout(() => { document.getElementById('scroll-icon').style.display = 'block'; }, 1000);
         }
 
@@ -91,32 +93,6 @@
             document.getElementById("loader").style.display = "none";
             document.getElementById("fetch").style.display = "none";
             document.getElementById("content").style.display = "block";
-        }
-
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
         }
     </script>
 </body>

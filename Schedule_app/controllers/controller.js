@@ -1,7 +1,6 @@
 const { response } = require('express');
-const guestbookDAO = require('../models/model');
-const db = new guestbookDAO('./projects.db');
 const User = require("../models/user");
+const Project = require("../models/project");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
@@ -99,20 +98,20 @@ exports.user_logout = function(req, res) {
     res.redirect('/users/login');
 }
 
-exports.dashboard = function(req, res){
-    
-    db.getAllProjects().then((list) => {
+exports.dashboard = async(req, res) =>{
 
+    try {
+        const project = await Project.find({ user: req.user }).lean();
+        console.log(project);
         res.render('projects', {
             'heading' : 'Projects',
-            'user' : req.user.username,
             'date' : new Date(),
-            'projects' : list
-        });
-        console.log('Promise resolved');
-    }).catch((err) => {
-        console.log('Promise rejected', err);
-    })
+            user: req.user.username,
+            'project' : project
+        })
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 exports.add_project = function(req, res) {
@@ -143,39 +142,59 @@ exports.post_remove = function(req, res) {
     db.removeProject(req.body.title);
     res.redirect('/dashboard');
 }
-/*
-exports.show_user_entries = function(req, res) {
-    console.log('filtering author name', req.params.author);
-
-    let user = req.params.author;
-    db.getEntriesByUser(user).then((entries) => {
-        res.render('entries', {
-            'title': 'Guest Book',
-            'entries': entries
-        });
-    }).catch((err) => {
-        console.log('error handling author posts', err);
-    });
-}
-*/
 
 exports.post_project = function(req, res) {
     console.log('processing post_project controller');
 
-    db.addProject(req.body.title, req.body.module, req.body.due);
-    res.redirect('/dashboard');
+    try {
+        req.body.user = req.user.id;
+        Project.create(req.body);
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+    }
+    if(!req.body.title) {
+        res.status(400).send("Coursework Title required");
+        return;
+    }
 }
 
-/*
-exports.new_entry = function(req, res){
-    res.send('<h1>Not yet implemented: show a new entry page</h1>');
+exports.delete_project = async (req, res) => {
+    console.log('Deleting coursework');
+    try {
+        await Project.deleteOne({ _id: req.params.id });
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+    
+    }
 }
-*/
 
-/*
-exports.peters_entries = function(req, res){
-    res.send('<h1>Processing Peter\'s Entries, see terminal</h1>');
-    db.getPetersEntries();
+exports.mark_complete = async (req, res) => {
+    console.log('Changing status');
+    try {
+        const date = new Date();
+
+        function convertDate(date) {
+            var yyyy = date.getFullYear().toString();
+            var mm = (date.getMonth()+1).toString();
+            var dd  = date.getDate().toString();
+          
+            var mmChars = mm.split('');
+            var ddChars = dd.split('');
+          
+            return yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+          }
+
+        convertDate(date);
+        console.log(convertDate(date));
+
+        await Project.updateOne({ _id: req.params.id }, {status: 'Complete', completion: convertDate(date)});
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+    
+    }
 }
-*/
+
     

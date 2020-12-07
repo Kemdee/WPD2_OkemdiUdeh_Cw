@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 
 //passport config:
 require('./config/passport')(passport)
@@ -29,7 +30,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
     secret : 'secret',
     resave : true,
-    saveUninitialized : true
+    saveUninitialized : true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 //use flash
 app.use(passport.initialize());

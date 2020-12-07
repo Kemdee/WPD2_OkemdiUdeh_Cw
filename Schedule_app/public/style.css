@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-
+    
 }
 
 body {
@@ -148,10 +148,10 @@ body {
 .icon-bar {
     width: 70px;
     background-color:rgb(29, 29, 29);
-    height: 80%;
+    height: 70%;
     position: fixed;
     z-index: 1;
-    margin-top: 20px;
+    margin-top: 40px;
     overflow-x: hidden;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -267,7 +267,31 @@ body {
     border-radius: 50%;
     position: relative;
     left: 15px;
-    bottom: 5px;
+    bottom: 35px;
+}
+
+.modify {
+    border: 2px solid #7684FA;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 33px;
+    left: 150px;
+    transition:  .2s;
+    transition-timing-function: ease;
+}
+
+.modify:hover {
+    background-color: #7684FA;
+    cursor: pointer;
+}
+
+.fa-exchange-alt {
+    color:  #fff;
+    position: relative;
+    left: 7px;
+    bottom: 28px;
 }
 
 .remove:hover {
@@ -290,7 +314,7 @@ body {
     border-radius: 50%;
     position: relative;
     right: 15px;
-    bottom: 5px;
+    bottom: 72px;
 }
 
 .check:hover {
@@ -305,57 +329,3 @@ body {
     left: 7px;
 }
 
-#myBtn {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    bottom: 55px;
-    right: 30px;
-    color: #223556;
-    outline: none;
-}
-
-#myBtn:hover {
-    background-color: #F4F5F7;
-}
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }

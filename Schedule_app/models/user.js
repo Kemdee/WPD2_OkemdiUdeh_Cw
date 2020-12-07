@@ -16,13 +16,7 @@ date :{
     type : Date,
     default : Date.now
 } ,
-projects: [
-    {
-        title : String,
-        module : String,
-        due : String
-    }
-]
+
 });
 const User= mongoose.model('User',UserSchema);
 

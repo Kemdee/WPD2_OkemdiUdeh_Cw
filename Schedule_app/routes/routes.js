@@ -17,6 +17,10 @@ router.get('/remove', controller.remove_project);
 
 router.post('/remove', controller.post_remove);
 
+router.get('/delete/:id', controller.delete_project);
+
+router.get('/complete/:id', controller.mark_complete);
+
 router.get('/register', controller.register);
 
 //router.get('/posts/:author', controller.show_user_entries);
