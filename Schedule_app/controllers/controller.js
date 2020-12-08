@@ -181,7 +181,7 @@ exports.mark_complete = async (req, res) => {
             var mmChars = mm.split('');
             var ddChars = dd.split('');
           
-            return yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+            return (ddChars[1]?dd:"0"+ddChars[0]) + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + yyyy;
           }
 
         convertDate(date);
@@ -201,6 +201,7 @@ exports.view_project = async (req, res) => {
         const project = await Project.find({ _id: req.params.id }).lean();
         res.render('viewProject', {
             user: req.user.username,
+            'name': req.user.username,
             project
         })
     } catch (error) {

@@ -33,11 +33,13 @@
     <div class="main" id="myMain">
         {{#project}}
         <h1>{{title}}</h1>
+        <h2><strong>User:</strong> {{name}}</h2>
         <h2><strong>Module:</strong> {{module}}</h2>
         <h2><strong>Due Date:</strong> {{due}}</h2>
         <h2><strong>Status:</strong> {{status}}</h2>
         <h2><strong>Completion Date:</strong> {{completion}}</h2>
-        <h2><strong>Milestones:</strong> {{milestones}}</h2>
+        <h2 id="mile"><strong>Milestones:</strong></h2>
+        <h2>{{milestones}}</h2>
         {{/project}}
     </div>
     </div>
@@ -45,12 +47,12 @@
         function openNav() {
             document.getElementById('scroll-icon').style.display = 'none';
             document.getElementById("myNav").style.width = "270px";
-            document.getElementById("myMain").style.marginLeft = "300px";
+            document.getElementById("myMain").style.marginLeft = "450px";
         }
 
         function closeNav() {
             document.getElementById("myNav").style.width = "0";
-            document.getElementById("myMain").style.marginLeft= "250px";
+            document.getElementById("myMain").style.marginLeft= "370px";
             setTimeout(() => { document.getElementById('scroll-icon').style.display = 'block'; }, 1000);
         }
 

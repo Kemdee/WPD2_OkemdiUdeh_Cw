@@ -175,7 +175,7 @@ body {
 }
 
 .main {
-    height: 700px;
+    height: 750px;
     width: 75%;
     margin-left: 250px;
     box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
@@ -188,7 +188,7 @@ body {
 .pic {
     width: 400px;
     background-image: url('../add.jpg');
-    height: 700px;
+    height: 750px;
     position: absolute;
     z-index: 1;
     overflow-x: hidden;
@@ -251,6 +251,7 @@ input[type=submit] {
     margin-top: 20px;
     transition: 0.5s;
     transition-timing-function: ease;
+    outline: none;
 }
 
 input[type=submit]:hover {

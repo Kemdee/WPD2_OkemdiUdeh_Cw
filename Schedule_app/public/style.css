@@ -176,7 +176,7 @@ body {
 .icon-bar a:hover {
     background-color: #000;
 }
-  
+
 .active {
     background-color: #7684FA;
 }
@@ -347,4 +347,8 @@ body {
     top: 10px;
     left: 7px;
 }
+
+.darkmode-layer, .darkmode-toggle {
+    z-index: 500;
+  }
 

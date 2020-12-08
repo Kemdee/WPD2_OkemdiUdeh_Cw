@@ -162,6 +162,7 @@ input[type=submit] {
     transition-timing-function: ease;
     position: relative;
     left: 15px;
+    outline: none;
 }
 
 input[type=submit]:hover {

@@ -84,7 +84,7 @@ body {
     font-weight: 200;
     padding-top: 25px;
     padding-bottom: 5px;
-    width: 175px;
+    width: 220px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -180,7 +180,7 @@ body {
     box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
     margin-top: 40px;
     border-radius: 25px;
-    transition: margin-left .5s;
+    transition: .5s;
     padding-bottom: 40px;
 }
 
@@ -203,3 +203,6 @@ body {
     margin-left: 10px;
 }
 
+#mile {
+    text-align: center;
+}
