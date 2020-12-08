@@ -2,12 +2,10 @@ This project is web application designed to help students manage all their cours
 
 How to use:
 
-Clone the project
+cd into 'Schedule_app'
 
-Initialise a new npm package npm init
+Install dependencies
 
-Import all the modules in the package list
+Run the app by typing: node index
 
-Run the app by typing: nodemon index
-
-check results in: localhost:3000
+Open in browser
