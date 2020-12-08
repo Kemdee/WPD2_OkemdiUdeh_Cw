@@ -313,6 +313,10 @@ body {
     top: 9px;
 }
 
+.darkmode-layer, .darkmode-toggle {
+    z-index: 500;
+  }
+
 
 
 

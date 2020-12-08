@@ -99,12 +99,12 @@ exports.user_logout = function(req, res) {
 }
 
 exports.dashboard = async(req, res) =>{
-
+    console.log('Processing dashboard controller')
     try {
         const project = await Project.find({ user: req.user }).lean();
         console.log(project);
         res.render('projects', {
-            'heading' : 'Projects',
+            'heading' : 'Dashboard',
             'date' : new Date(),
             user: req.user.username,
             'alert' : res.locals.message,
@@ -123,10 +123,6 @@ exports.add_project = function(req, res) {
         user: req.user.username
     });
 }
-
-// exports.login = function(req, res) {
-//     res.render('login');
-// }
 
 exports.register = function(req, res) {
     res.render('register', {
@@ -147,17 +143,25 @@ exports.post_project = async(req, res) =>{
         res.render('500');
     }
     if(!req.body.title) {
-        res.status(400).send("Coursework Title required");
+        res.status(400).send("Title required");
+        return;
+    }
+    if(!req.body.module) {
+        res.status(400).send("Module required");
+        return;
+    }
+    if(!req.body.due) {
+        res.status(400).send("Due date required");
         return;
     }
     if(!req.body.milestones) {
-        res.status(400).send("Milestone required");
+        res.status(400).send("Milestones required");
         return;
     }
 }
 
 exports.delete_project = async (req, res) => {
-    console.log('Deleting coursework');
+    console.log('Processing delete project controller');
     try {
         await Project.deleteOne({ _id: req.params.id });
         req.flash('message', 'Your project has been successfully removed!'); 
@@ -169,7 +173,7 @@ exports.delete_project = async (req, res) => {
 }
 
 exports.mark_complete = async (req, res) => {
-    console.log('Changing status');
+    console.log('Processing mark complete controller');
     try {
         const date = new Date();
 
@@ -197,9 +201,21 @@ exports.mark_complete = async (req, res) => {
 }
 
 exports.view_project = async (req, res) => {
+    console.log('Processing viewProject Controller');
     try {
+        
+        const project1 = await Project.find({ _id: req.params.id }).lean();
+        var mile = project1[0].milestones;
+
+        var mile1 = mile.replace(/<\/?[^>]+(>|$)/g, "");
+        var mile2 = mile1.replace('&nbsp;', '');
+        
+
+        await Project.updateOne({ _id: req.params.id }, {milestones: mile2});
         const project = await Project.find({ _id: req.params.id }).lean();
+        console.log(project)
         res.render('viewProject', {
+            'heading' : 'View',
             user: req.user.username,
             'name': req.user.username,
             project
@@ -211,9 +227,11 @@ exports.view_project = async (req, res) => {
 }
 
 exports.edit_project = async (req, res) => {
+    console.log('Processing edit project Controller');
     try {
         const project = await Project.find({ _id: req.params.id }).lean();
         res.render('editProject', {
+            'heading' : 'Edit',
             user: req.user.username,
             project
         })
@@ -224,6 +242,7 @@ exports.edit_project = async (req, res) => {
 }
 
 exports.update_project = async (req, res) => {
+    console.log('Processing update project Controller');
     try {
         let project = await Project.findById(req.params.id);
 
@@ -240,11 +259,12 @@ exports.update_project = async (req, res) => {
 }
 
 exports.view_completed = async(req, res) => {
+    console.log('Processing view completed  Controller');
     try {
         const project = await Project.find({ user: req.user, status:"Complete" }).lean();
         console.log(project);
         res.render('complete', {
-            'heading' : 'Projects',
+            'heading' : 'Complete',
             'date' : new Date(),
             user: req.user.username,
             'project' : project
@@ -256,11 +276,12 @@ exports.view_completed = async(req, res) => {
 }
 
 exports.view_incomplete = async(req, res) => {
+    console.log('Processing view incomplete Controller');
     try {
         const project = await Project.find({ user: req.user, status:"In Progress" }).lean();
         console.log(project);
         res.render('incomplete', {
-            'heading' : 'Projects',
+            'heading' : 'Incomplete',
             'date' : new Date(),
             user: req.user.username,
             'project' : project
@@ -272,11 +293,12 @@ exports.view_incomplete = async(req, res) => {
 }
 
 exports.share = async(req, res) => {
+    console.log('Processing share Controller');
     try {
         const project = await Project.find({ user: req.user }).lean();
         console.log(project);
         res.render('share', {
-            'heading' : 'Projects',
+            'heading' : 'Share',
             'date' : new Date(),
             user: req.user.username,
             'project' : project
@@ -288,10 +310,12 @@ exports.share = async(req, res) => {
 }
 
 exports.share_project = async (req, res) => {
+    console.log('Processing share project');
     try {
         const project = await Project.find({ _id: req.params.id }).lean();
         console.log(project);
         res.render('shareProject', {
+            'heading' : 'Share',
             user: req.user.username,
             project
         })

@@ -206,3 +206,11 @@ body {
 #mile {
     text-align: center;
 }
+#mile1 {
+    text-align: center;
+    width: 100%;
+}
+
+.darkmode-layer, .darkmode-toggle {
+    z-index: 500;
+  }

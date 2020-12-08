@@ -190,7 +190,7 @@ body {
     background-image: url('../edit.jpg');
     height: 900px;
     position: absolute;
-    z-index: 1;
+    z-index: 600;
     overflow-x: hidden;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -252,8 +252,17 @@ input[type=submit] {
     margin-top: 20px;
     transition: 0.5s;
     transition-timing-function: ease;
+    outline: none;
 }
 
 input[type=submit]:hover {
     background-color: #333;
 }
+
+label {
+    color: #757575;
+}
+
+.darkmode-layer, .darkmode-toggle {
+    z-index: 500;
+  }

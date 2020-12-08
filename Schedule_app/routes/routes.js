@@ -11,8 +11,6 @@ router.get('/new', ensureAuthenticated, controller.add_project);
 
 router.post('/new', ensureAuthenticated, controller.post_project);
 
-//router.get('/login', controller.login);
-
 router.get('/project/:id', ensureAuthenticated, controller.view_project);
 
 router.get('/delete/:id', ensureAuthenticated, controller.delete_project);

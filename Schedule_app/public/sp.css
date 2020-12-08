@@ -185,7 +185,7 @@ body {
     background-image: url('../share.jpg');
     height: 570px;
     position: fixed;
-    z-index: 1;
+    z-index: 600;
     overflow-x: hidden;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -272,4 +272,8 @@ body {
 
   #cop:hover {
       background-color: #333;
+  }
+
+  .darkmode-layer, .darkmode-toggle {
+    z-index: 500;
   }
