@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {{>header}}
-    <link rel="stylesheet" href="../edit.css">
+    <link rel="stylesheet" href="../sp.css">
 </head>
 <body onload="loading()">
     <div id="loader"></div>
@@ -11,7 +11,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
             <h1>Welcome {{user}}!</h1>
-            <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
+            <a href="/dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
             <a href="/share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="/complete"><i class="fas fa-list-alt fa-1.8x"></i> Completed</a>
@@ -23,7 +23,7 @@
         <div class="icon-bar" id="myIcons">
             <a href="/dashboard"><i class="fas fa-tachometer-alt"></i></a> 
             <a href="/new"><i class="fas fa-plus-circle"></i></a> 
-            <a href="/share"><i class="fas fa-share"></i></a>
+            <a class="active" href="/share"><i class="fas fa-share" style="color: #fff;"></i></a>
             <a href="/complete"><i class="fas fa-list-alt"></i></a>
             <a href="/incomplete"><i class="far fa-list-alt"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
@@ -33,31 +33,16 @@
     <div class="main" id="myMain">
         <div class="pic"></div>
         <div class="details">
-            <h1>Update Project</h1>
             {{#project}}
-            <form method="post" role="form">
-                <div class="form-group">
-                    <input type="text" id="title" name="title" value="{{title}}" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="module" name="module" value="{{module}}" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="due" name="due" value="{{due}}" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="status" name="status" value="{{status}}" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="completion" name="completion" value="{{completion}}">
-                </div>
-                <div class="form-group" id="ckedit">
-                    <textarea id="milestones" name="milestones" value="{{milestones}}" required></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update">
-                </div>
-            </form>
+            <h1>Share Link</h1>
+            <!-- The text field -->
+            <input type="text" value="localhost:3000/project/{{_id}}" id="link">
+            <div class="tooltip">
+            <button onclick="copyLink()" onmouseout="outFunc()" id="cop">
+            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+            Copy link
+            </button>
+            </div>
             {{/project}}
         </div>
     </div>
@@ -85,16 +70,25 @@
             document.getElementById("loader").style.display = "none";
             document.getElementById("content").style.display = "block";
         }
-    </script>
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
-      integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" 
-      crossorigin="anonymous">
-    </script>
-    <script>
-    CKEDITOR.replace('milestones', {
-      plugins: 'wysiwygarea, toolbar, basicstyles, link'
-      })
+
+        function copyLink() {
+        /* Get the text field */
+        var copyText = document.getElementById("link");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Link copied" ;
+    }
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
     </script>
 </body>
 </html>

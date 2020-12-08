@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {{>header}}
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../share.css">
 </head>
 <body onload="loading()">
     <div id="loader"></div>
@@ -12,9 +12,9 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
             <h1>Welcome {{user}}!</h1>
-            <a href="#dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
+            <a href="/dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
             <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
-            <a href="/share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
+            <a href="#share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="/complete"><i class="fas fa-list-alt fa-1.8x"></i> Completed</a>
             <a href="/incomplete"><i class="far fa-list-alt fa-1.8x"></i> Incomplete</a>
             <a href="#settings"><i class="fas fa-cog fa-1.8x"></i> Settings</a>
@@ -22,9 +22,9 @@
         </div>
         <div class="icon-scroll" id="scroll-icon">
         <div class="icon-bar" id="myIcons">
-            <a class="active" href="#"><i class="fas fa-tachometer-alt" style="color: #fff;"></i></a> 
+            <a href="/dashboard"><i class="fas fa-tachometer-alt"></i></a> 
             <a href="/new"><i class="fas fa-plus-circle"></i></a> 
-            <a href="/share"><i class="fas fa-share"></i></a>
+            <a class="active" href="#"><i class="fas fa-share" style="color: #fff;"></i></a>
             <a href="/complete"><i class="fas fa-list-alt"></i></a>
             <a href="/incomplete"><i class="far fa-list-alt"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
@@ -32,11 +32,8 @@
         </div>
         </div>
         <div class="main" id="myMain">
-            <h1>My {{heading}}</h1>
+            <h1>Share {{heading}}</h1>
             <h3 class="date">{{date}}</h3>
-            {{#alert}}
-                <p class="alert">{{message}}</p>
-            {{/alert}}
             <div class="card-cont">
                 {{#project}}
                     <div class="card">
@@ -47,27 +44,19 @@
                         {{#completion}}
                         <h2><strong>Completion Date:</strong> {{completion}}</h2>
                         {{/completion}}
-                        <div class="remove">
-                            <a href="/delete/{{_id}}">
-                                <i class="fas fa-times fa-lg"></i>
-                            </a>
-                        </div>
+                        
                         <div class="modify">
-                            <a href="/edit/{{_id}}">
-                                <i class="fas fa-exchange-alt fa-lg"></i>
+                            <a href="/share/{{_id}}">
+                                <i class="fas fa-share-square fa-lg"></i>
                             </a>
                         </div>
-                        <div class="check">
-                            <a href="/complete/{{_id}}">
-                                <i class="fas fa-check fa-lg"></i>
-                            </a>
-                        </div>
+                        
                     </div>
                 {{/project}}
             </div>
             {{^project}}
                 <i class="fas fa-tasks fa-8x" style="color: #7684FA;"></i> 
-                <h3 class="try">Try adding some projects to see them here</h3>
+                <h3 class="try">Complete some projects to see them here</h3>
             {{/project}}
         </div>
     </div>

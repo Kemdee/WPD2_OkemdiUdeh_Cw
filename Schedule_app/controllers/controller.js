@@ -270,4 +270,33 @@ exports.view_incomplete = async(req, res) => {
     }
 }
 
+exports.share = async(req, res) => {
+    try {
+        const project = await Project.find({ user: req.user }).lean();
+        console.log(project);
+        res.render('share', {
+            'heading' : 'Projects',
+            'date' : new Date(),
+            user: req.user.username,
+            'project' : project
+        })
+    } catch(err) {
+        console.error(err);
+        res.render('500');
+    }
+}
+
+exports.share_project = async (req, res) => {
+    try {
+        const project = await Project.find({ _id: req.params.id }).lean();
+        console.log(project);
+        res.render('shareProject', {
+            user: req.user.username,
+            project
+        })
+    } catch (error) {
+        console.error(err);
+        res.render('500');
+    }
+}
     

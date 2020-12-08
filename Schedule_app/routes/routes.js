@@ -25,6 +25,10 @@ router.get('/complete', ensureAuthenticated, controller.view_completed);
 
 router.get('/incomplete', ensureAuthenticated, controller.view_incomplete);
 
+router.get('/share', ensureAuthenticated, controller.share);
+
+router.get('/share/:id', ensureAuthenticated, controller.share_project);
+
 router.get('/complete/:id', ensureAuthenticated, controller.mark_complete);
 
 router.get('/register', controller.register);
