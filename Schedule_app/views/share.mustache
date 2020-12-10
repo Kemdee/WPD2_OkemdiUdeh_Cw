@@ -6,7 +6,7 @@
 </head>
 <body onload="loading()">
     <div id="loader"></div>
-    <h1 id="fetch">Fetching projects . . .</h1>
+    <h1 id="fetch">Opening in sharing mode . . .</h1>
     <div style="display:none;" id="content" class="animate-bottom">
         <div class="nav" id="myNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -55,10 +55,14 @@
                 {{/project}}
             </div>
             {{^project}}
-                <i class="fas fa-tasks fa-8x" style="color: #7684FA;"></i> 
+                <i class="fas fa-tasks fa-8x" style="color: #CBDAA8;"></i> 
                 <h3 class="try">Try adding some projects to see them here</h3>
             {{/project}}
         </div>
+        <form method="post" action="/search" role="form">
+                <input type="text" placeholder="Search for project" id="search" name="search">
+                <button type="submit" class="sea"><i class="fa fa-search"></i></button>
+        </form>
     </div>
     <script>
         function openNav() {

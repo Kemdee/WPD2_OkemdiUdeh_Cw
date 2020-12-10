@@ -6,6 +6,7 @@
 </head>
 <body onload="loading()">
     <div id="loader"></div>
+    <h1 id="fetch">Opening in edit mode . . .</h1>
     <div style="display:none;" id="content" class="animate-bottom">
     <div class="nav" id="myNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -84,6 +85,7 @@
 
         function showPage() {
             document.getElementById("loader").style.display = "none";
+            document.getElementById("fetch").style.display = "none";
             document.getElementById("content").style.display = "block";
         }
     </script>

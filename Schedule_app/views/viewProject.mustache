@@ -6,8 +6,9 @@
 </head>
 <body onload="loading()">
     <div id="loader"></div>
+    <h1 id="fetch">Opening project . . .</h1>
     <div style="display:none;" id="content" class="animate-bottom">
-    <div class="nav" id="myNav">
+        <div class="nav" id="myNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
             <h1>Welcome {{user}}!</h1>
@@ -20,28 +21,28 @@
             <a href="/users/logout"><i class="fas fa-sign-out-alt fa-1.8x"></i> Logout</a>
         </div>
         <div class="icon-scroll" id="scroll-icon">
-        <div class="icon-bar" id="myIcons">
-            <a href="/dashboard"><i class="fas fa-tachometer-alt"></i></a> 
-            <a href="/new"><i class="fas fa-plus-circle"></i></a> 
-            <a href="/share"><i class="fas fa-share"></i></a>
-            <a href="/complete"><i class="fas fa-list-alt"></i></a>
-            <a href="/incomplete"><i class="far fa-list-alt"></i></a>
-            <a href="#"><i class="fas fa-cog"></i></a>
-            <a href="#" onclick="openNav()"><i class="fas fa-sign-out-alt"></i></a>
+            <div class="icon-bar" id="myIcons">
+                <a href="/dashboard"><i class="fas fa-tachometer-alt"></i></a> 
+                <a href="/new"><i class="fas fa-plus-circle"></i></a> 
+                <a href="/share"><i class="fas fa-share"></i></a>
+                <a href="/complete"><i class="fas fa-list-alt"></i></a>
+                <a href="/incomplete"><i class="far fa-list-alt"></i></a>
+                <a href="#"><i class="fas fa-cog"></i></a>
+                <a href="#" onclick="openNav()"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
         </div>
+        <div class="main" id="myMain">
+            {{#project}}
+                <h1>{{title}}</h1>
+                <h2><strong>User:</strong> {{name}}</h2>
+                <h2><strong>Module:</strong> {{module}}</h2>
+                <h2><strong>Due Date:</strong> {{due}}</h2>
+                <h2><strong>Status:</strong> {{status}}</h2>
+                <h2><strong>Completion Date:</strong> {{completion}}</h2>
+                <h2 id="mile"><strong>Milestones:</strong></h2>
+                <h2 id="mile1">{{milestones}}</h2>
+            {{/project}}
         </div>
-    <div class="main" id="myMain">
-        {{#project}}
-        <h1>{{title}}</h1>
-        <h2><strong>User:</strong> {{name}}</h2>
-        <h2><strong>Module:</strong> {{module}}</h2>
-        <h2><strong>Due Date:</strong> {{due}}</h2>
-        <h2><strong>Status:</strong> {{status}}</h2>
-        <h2><strong>Completion Date:</strong> {{completion}}</h2>
-        <h2 id="mile"><strong>Milestones:</strong></h2>
-        <h2 id="mile1">{{milestones}}</h2>
-        {{/project}}
-    </div>
     </div>
     <script>
         function openNav() {
@@ -64,6 +65,7 @@
 
         function showPage() {
             document.getElementById("loader").style.display = "none";
+            document.getElementById("fetch").style.display = "none";
             document.getElementById("content").style.display = "block";
         }
     </script>

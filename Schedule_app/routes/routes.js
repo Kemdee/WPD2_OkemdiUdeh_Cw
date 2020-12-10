@@ -7,6 +7,8 @@ router.get("/", controller.welcome);
 
 router.get("/dashboard", ensureAuthenticated, controller.dashboard);
 
+router.post("/search", ensureAuthenticated, controller.search);
+
 router.get('/new', ensureAuthenticated, controller.add_project);
 
 router.post('/new', ensureAuthenticated, controller.post_project);

@@ -11,19 +11,26 @@ body {
 #loader {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     z-index: 1;
     width: 100px;
     height: 100px;
     margin: -75px 0 0 -75px;
     border: 10px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #7684FA;
+    border-top: 16px solid #CBDAA8;
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
+
+#fetch {
+    text-align: center;
+    position: relative;
+    top: 320px;
+    font-weight: 500;
+}
 
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
@@ -166,7 +173,7 @@ body {
 }
   
 .active {
-    background-color: #7684FA;
+    background-color: #CBDAA8;
     color: #fff;
 }
 
@@ -198,7 +205,7 @@ body {
 }
 
 .details h1 {
-    color: #7684fa;
+    color: #CBDAA8;
     font-size: 30px;
     margin-bottom: 40px;
 }
@@ -259,7 +266,7 @@ body {
       border-top-right-radius: 25px;
       border-bottom-right-radius: 25px;
       border: none;
-      background-color: #7684FA;
+      background-color: #CBDAA8;
       font-family: 'Montserrat', sans-serif;
       color: #fff;
       font-weight: 500;

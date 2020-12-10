@@ -22,7 +22,7 @@ body {
     margin: -75px 0 0 -75px;
     border: 10px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #7684FA;
+    border-top: 16px solid #CBDAA8;
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
@@ -177,8 +177,9 @@ body {
     background-color: #000;
 }
 
+
 .active {
-    background-color: #7684FA;
+    background-color: #CBDAA8
 }
 
 .main {
@@ -219,6 +220,7 @@ body {
     bottom: 280px;
 }
 
+
 .alert {
     position: relative;
     text-align: center;
@@ -230,7 +232,6 @@ body {
     width: 40%;
     margin: 0 auto;
 }
-
 
 .card-cont {
     display: grid;
@@ -247,6 +248,7 @@ body {
     transition: 0.3s;
     border-radius: 25px;
     transition: transform .2s;
+
 }
 
 .card a {
@@ -259,6 +261,7 @@ body {
     transform: scale(1.05);
 }
 
+
 .card h1 {
     font-size: 20px;
     font-weight: 500;
@@ -268,7 +271,7 @@ body {
     position: relative;
     bottom: 40px;
     padding-top: 17px;
-    background-color: #7684FA;
+    background-color: #CBDAA8;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
@@ -280,6 +283,7 @@ body {
     bottom: 60px;
     margin-left: 10px;
 }
+
 
 .remove {
     border: 2px solid #C33434;
@@ -293,7 +297,7 @@ body {
 }
 
 .modify {
-    border: 2px solid #7684FA;
+    border: 2px solid #CBDAA8;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -303,7 +307,7 @@ body {
 }
 
 .modify:hover {
-    background-color: #7684FA;
+    background-color: #CBDAA8;
     cursor: pointer;
 }
 
@@ -348,6 +352,44 @@ body {
     top: 10px;
     left: 7px;
 }
+
+form {
+    width: 30%;
+    display: inline;
+    position: relative;
+    left: 1010px;
+    bottom: 575px;
+}
+
+input[type=text] {
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-weight: 600;
+    outline: none;
+    background-color: #E6E6E6;
+    border: 0px;
+  }
+  
+  /* Style the submit button */
+.sea {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 13.5px;
+    background:  #CBDAA8;
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    right: 4px;
+    top: 1px;
+  }
+  
+  .sea:hover {
+    background: #333;
+  }
 
 .darkmode-layer, .darkmode-toggle {
     z-index: 500;

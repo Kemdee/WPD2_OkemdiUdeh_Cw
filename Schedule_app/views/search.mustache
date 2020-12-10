@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     {{>header}}
-    <link rel="stylesheet" href="../add.css">
+    <link rel="stylesheet" href="../search.css">
 </head>
 <body onload="loading()">
     <div id="loader"></div>
-    <h1 id="fetch">Time to add a project . . .</h1>
+    <h1 id="fetch">Searching for project . . .</h1>
     <div style="display:none;" id="content" class="animate-bottom">
-    <div class="nav" id="myNav">
+        <div class="nav" id="myNav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <i class="fas fa-user-circle fa-6x" style="color: rgb(119, 118, 118);"></i>
             <h1>Welcome {{user}}!</h1>
             <a href="/dashboard"><i class="fas fa-tachometer-alt fa-1.8x"></i> Dashboard</a>
-            <a href="#"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
+            <a href="/new"><i class="fas fa-plus-circle fa-1.8x"></i> Add Project</a>
             <a href="/share"><i class="fas fa-share fa-1.8x"></i> Share Project</a>
             <a href="/complete"><i class="fas fa-list-alt fa-1.8x"></i> Completed</a>
             <a href="/incomplete"><i class="far fa-list-alt fa-1.8x"></i> Incomplete</a>
@@ -23,7 +23,7 @@
         <div class="icon-scroll" id="scroll-icon">
         <div class="icon-bar" id="myIcons">
             <a href="/dashboard"><i class="fas fa-tachometer-alt"></i></a> 
-            <a class="active" href="#"><i class="fas fa-plus-circle" style="color: #fff;"></i></a> 
+            <a href="/new"><i class="fas fa-plus-circle"></i></a> 
             <a href="/share"><i class="fas fa-share"></i></a>
             <a href="/complete"><i class="fas fa-list-alt"></i></a>
             <a href="/incomplete"><i class="far fa-list-alt"></i></a>
@@ -31,41 +31,58 @@
             <a href="#" onclick="openNav()"><i class="fas fa-sign-out-alt"></i></a>
         </div>
         </div>
-    <div class="main" id="myMain">
-        <div class="pic"></div>
-        <div class="details">
-            <h1>New Project</h1>
-            <form method="post" role="form">
-                <div class="form-group">
-                    <input type="text" id="title" name="title" placeholder="Title" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="module" name="module" placeholder="Module" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="due" name="due" placeholder="Due date: dd-mm-yyyy" required>
-                </div>
-                 <div class="form-group" id="ckedit">
-                    <label for="milestones">Milestones:</label>
-                    <textarea id="milestones" name="milestones" placeholder="Enter milestones" required></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Add">
-                </div>
-            </form>
+        <div class="main" id="myMain">
+            <h1>My Projects</h1>
+            <h3 class="date">{{date}}</h3>
+            {{#alert}}
+                <p class="alert">{{message}}</p>
+            {{/alert}}
+                {{#project}}
+                    <div class="card">
+                        <a href="/project/{{_id}}"><h1 class="tit">{{title}}</h1></a>
+                        <h2><strong>Module:</strong> {{module}}</h2>
+                        <h2><strong>Due Date:</strong> {{due}}</h2>
+                        <h2><strong>Status:</strong> {{status}}</h2>
+                        {{#completion}}
+                        <h2><strong>Completion Date:</strong> {{completion}}</h2>
+                        {{/completion}}
+                        <div class="remove">
+                            <a href="/delete/{{_id}}">
+                                <i class="fas fa-times fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="modify">
+                            <a href="/edit/{{_id}}">
+                                <i class="fas fa-exchange-alt fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="check">
+                            <a href="/complete/{{_id}}">
+                                <i class="fas fa-check fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                {{/project}}
+            {{^project}}
+                <i class="fas fa-exclamation-circle fa-8x" style="color: #CBDAA8;"></i> 
+                <h3 class="try">Project not found, Please try again</h3>
+            {{/project}}
         </div>
-    </div>
+        <form method="post" role="form">
+                <input type="text" placeholder="Search for project" id="search" name="search">
+                <button type="submit" class="sea"><i class="fa fa-search"></i></button>
+        </form>
     </div>
     <script>
         function openNav() {
             document.getElementById('scroll-icon').style.display = 'none';
             document.getElementById("myNav").style.width = "270px";
-            document.getElementById("myMain").style.marginLeft = "300px";
+            document.getElementById("myMain").style.marginLeft = "270px";
         }
 
         function closeNav() {
             document.getElementById("myNav").style.width = "0";
-            document.getElementById("myMain").style.marginLeft= "250px";
+            document.getElementById("myMain").style.marginLeft= "100px";
             setTimeout(() => { document.getElementById('scroll-icon').style.display = 'block'; }, 1000);
         }
 
@@ -80,16 +97,6 @@
             document.getElementById("fetch").style.display = "none";
             document.getElementById("content").style.display = "block";
         }
-    </script>
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
-      integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" 
-      crossorigin="anonymous">
-    </script>
-    <script>
-    CKEDITOR.replace('milestones', {
-      plugins: 'wysiwygarea, toolbar, basicstyles, link'
-      })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script>
