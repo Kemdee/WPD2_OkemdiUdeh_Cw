@@ -168,10 +168,6 @@ exports.post_project = async(req, res) =>{
         res.status(400).send("Due date required");
         return;
     }
-    if(!req.body.milestones) {
-        res.status(400).send("Milestones required");
-        return;
-    }
 }
 
 exports.delete_project = async (req, res) => {
@@ -239,7 +235,6 @@ exports.view_project = async (req, res) => {
 }
 
 exports.edit_project = async (req, res) => {
-    console.log('Processing edit project Controller');
     try {
         const project = await Project.find({ _id: req.params.id }).lean();
         res.render('editProject', {
