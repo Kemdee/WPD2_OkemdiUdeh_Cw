@@ -147,15 +147,6 @@ exports.register = function(req, res) {
 
 exports.post_project = async(req, res) =>{
 
-    try {
-        req.body.user = req.user.id;
-        await Project.create(req.body);
-        req.flash('message', 'Your project has been successfully added!'); 
-        res.redirect('/dashboard');
-    } catch(err) {
-        console.log(err);
-        res.render('500');
-    }
     if(!req.body.title) {
         res.status(400).send("Title required");
         return;
@@ -167,6 +158,16 @@ exports.post_project = async(req, res) =>{
     if(!req.body.due) {
         res.status(400).send("Due date required");
         return;
+    }
+
+    try {
+        req.body.user = req.user.id;
+        await Project.create(req.body);
+        req.flash('message', 'Your project has been successfully added!'); 
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+        res.render('500');
     }
 }
 
