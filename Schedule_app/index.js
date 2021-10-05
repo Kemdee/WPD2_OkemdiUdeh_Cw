@@ -12,10 +12,13 @@ const MongoStore = require('connect-mongo')(session);
 //passport config:
 require('./config/passport')(passport)
 
-//mongoose
-mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
-.then(() => console.log('Connected to mongoDB Database'))
-.catch((err)=> console.log(err));
+// DB config
+const db = require('./config/keys').MongoURI;
+
+// Connect to MongoDB
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err))
 
 const app = express();
 
@@ -45,8 +48,8 @@ app.use((req,res,next)=> {
     next();
 })
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000. Ctrl^c to quit.');
+app.listen(4000, () => {
+    console.log('Server started on port 4000. Ctrl^c to quit.');
 })
 
 app.use('/users', require('./routes/users'));

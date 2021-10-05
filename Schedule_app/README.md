@@ -4,6 +4,8 @@ How to use:
 
 cd into 'Schedule_app'
 
+Type in 'node install' to install dependencies
+
 Run the application by typing: node index
 
 Open browser and navigate to 'localhost:3000/'
